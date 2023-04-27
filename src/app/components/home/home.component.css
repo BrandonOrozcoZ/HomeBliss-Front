@@ -1,0 +1,30 @@
+
+
+img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.images{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1em;
+}
+
+.principal{
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    grid-row: 1/4;
+    grid-column: 1/2;
+}
+
+.secondary{
+    display: flex;
+    flex-direction: column;
+    grid-column: 2/3;
+    grid-column: 1/4;
+    gap: 1em;
+}
