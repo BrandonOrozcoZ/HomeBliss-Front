@@ -1,32 +1,68 @@
-.login{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    justify-self: center;
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Popp";
+  color: #5d5d5d;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  gap: 1em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+a{
     align-self: center;
-    gap: 1em;
-    width: 50%;
+    color: #14147A;
+    text-decoration: none;
 }
 
-form{
-    display: flex;
+a:hover{
+    cursor: pointer;
+    text-decoration: underline;
 }
 
-.credential{
-    display: flex;
-    flex-direction: column;
+hr {
+  border: 1px #5d5d5d solid;
 }
 
-h2{
-
-    margin: 0;
-    padding: 0;
+input {
+  border: 1px #5d5d5d solid;
+  border-radius: 7px;
+  font-size: 17px;
+  height: 1.7em;
+  padding-left: 4px;
 }
 
-hr{
-    margin: 0;
-    padding: 0;
-    width: 100%;
-}   
+button {
+  border: none;
+  border-radius: 7px;
+  height: 2.5em;
+  background: #a899ff;
+  grid-column: 1/5;
+  margin-top: 1em;
+  color: black;
+}
 
+.credential {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+hr {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}

@@ -9,6 +9,12 @@ import { SignupComponent } from './components/signup/signup.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { NewProductComponent } from './new-product/new-product.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { AccessComponent } from './components/access/access.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +24,17 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     SignupComponent,
     ProductComponent,
     ProductViewComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    NewProductComponent,
+    AccessComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
