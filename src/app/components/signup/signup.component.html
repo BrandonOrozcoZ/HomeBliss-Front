@@ -3,7 +3,7 @@
         <h2>Registro</h2>
         <hr>
     </div>
-  <form #signupForm="ngForm" ngNativeValidate (ngSubmit)="register()">
+  <form #signupForm="ngForm" ngNativeValidate (ngSubmit)="register(signupForm)">
 
     <div class="detail name">
       <label for="name">Nombre</label>

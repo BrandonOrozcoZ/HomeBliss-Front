@@ -19,7 +19,7 @@ export class SignupComponent {
   public register(signup:Form){
     if(this.validatePassword()){
       console.log(this.client);
-      signup.reset();
+      
     }else{
       this.toastr.warning("Las contraseñas no coinciden");
     }

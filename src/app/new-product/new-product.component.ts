@@ -7,4 +7,18 @@ import { Component } from '@angular/core';
 })
 export class NewProductComponent {
 
+  categories:string[];
+
+  constructor(){
+    this.categories = [];
+    this.getCategories();
+  }
+
+  private getCategories(){
+    this.categories.push('Tecnología');
+    this.categories.push('Deporte');
+    this.categories.push('Vehículo');
+    this.categories.push('Zapatos');
+  }
+
 }
