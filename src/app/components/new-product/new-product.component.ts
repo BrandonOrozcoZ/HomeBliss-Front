@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductDTO } from 'src/app/model/product-dto';
 
 @Component({
   selector: 'app-new-product',
@@ -8,10 +9,12 @@ import { Component } from '@angular/core';
 export class NewProductComponent {
 
   categories:string[];
+  product:ProductDTO;
 
   constructor(){
     this.categories = [];
     this.getCategories();
+    this.product = new ProductDTO();
   }
 
   private getCategories(){
@@ -19,6 +22,10 @@ export class NewProductComponent {
     this.categories.push('Deporte');
     this.categories.push('Vehículo');
     this.categories.push('Zapatos');
+  }
+
+  public createProduct(){
+    
   }
 
 }

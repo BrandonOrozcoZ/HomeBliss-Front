@@ -1,0 +1,99 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Popp";
+  color: #5d5d5d;
+}
+
+.create-product {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+  gap: 1em;
+  border-radius: 10px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  padding: 2em;
+  background-color: #edebff;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  column-gap: 1em;
+  row-gap: 0.5em;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  grid-column: 1/2;
+}
+
+.description {
+  grid-column: 1/2;
+}
+
+.price {
+  grid-column: 1/2;
+}
+
+.stock {
+  grid-column: 1/2;
+}
+
+.categories {
+  grid-column: 1/2;
+}
+
+.image {
+  grid-column: 2/3;
+  grid-row: 1/6;
+}
+
+button {
+  border: none;
+  border-radius: 7px;
+  height: 2.5em;
+  background: #a899ff;
+  grid-column: 1/5;
+  margin-top: 1.5em;
+  color: black;
+}
+
+input[type="file"] {
+  height: 100%;
+  display: none;
+}
+
+.upload:hover {
+  cursor: pointer;
+}
+
+.upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  border: 1px solid #a899ff;
+  border-radius: 7px;
+}
+
+input {
+  border: 1px solid #a899ff;
+  border-radius: 7px;
+  font-size: 17px;
+  height: 1.7em;
+  padding-left: 4px;
+}

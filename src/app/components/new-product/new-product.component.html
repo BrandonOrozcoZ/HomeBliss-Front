@@ -1,0 +1,43 @@
+<div class="create-product">
+    <div class="title">
+        <img src="" alt="">
+        <h2>Vender</h2>
+    </div>
+  <form #productForm="ngForm" ngNativeValidate (ngSubmit)="createProduct()">
+
+    <div class="detail name">
+      <label for="name">Nombre</label>
+      <input type="text" name="name" required maxlength="100" [(ngModel)]="product.name"/>
+    </div>
+
+    <div class="detail description">
+        <label for="description">Descripción</label>
+        <input type="text" name="description" required maxlength="100" [(ngModel)]="product.description"/>
+    </div>
+
+    <div class="detail price">
+      <label for="price">Precio</label>
+      <input type="number" name="price" required maxlength="150" [(ngModel)]="product.price"/>
+    </div>
+
+    <div class="detail stock">
+      <label for="stock">Unidades</label>
+      <input type="number" name="stock" required maxlength="100" [(ngModel)]="product.stock"/>
+    </div>
+
+    <div class="detail image">
+      <label class="upload" for="image"><img src="logo.PNG" alt="">Subir archivo</label>
+      <input type="file" id="image" name="image" accept="image/png, image/jpeg" required multiple [(ngModel)]="product.images">
+    </div>
+
+    <div class="detail categories">
+      <label for="categories">Categoria</label>
+      <select required [(ngModel)]="product.categories">
+        <option value="0" selected>Seleccione una categoría</option>
+        <option [value]="i+1" *ngFor="let item of categories; index as i">{{item}}</option>
+      </select>
+    </div>
+
+    <button type="submit">Registrarse</button>
+  </form>
+</div>

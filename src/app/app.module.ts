@@ -9,7 +9,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import { NewProductComponent } from './new-product/new-product.component';
+import { NewProductComponent } from './components/new-product/new-product.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
