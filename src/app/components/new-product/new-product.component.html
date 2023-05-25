@@ -26,18 +26,17 @@
     </div>
 
     <div class="detail image">
-      <label class="upload" for="image"><img src="logo.PNG" alt="">Subir archivo</label>
-      <input type="file" id="image" name="image" accept="image/png, image/jpeg" required multiple [(ngModel)]="product.images">
+      <label class="upload" for="image"><img src="logo.PNG" alt="Subir archivo"></label>
+      <input type="file" id="image" name="image" accept="image/png, image/jpeg" multiple (change)="validateImages($event)">
     </div>
 
     <div class="detail categories">
       <label for="categories">Categoria</label>
-      <select required [(ngModel)]="product.categories">
-        <option value="0" selected>Seleccione una categoría</option>
-        <option [value]="i+1" *ngFor="let item of categories; index as i">{{item}}</option>
-      </select>
+      <ng-select class="categories-select" [(ngModel)]="this.product.categories" appearance="outline" placeholder="Selecciona una categoria" [multiple]="true" notFoundText="No se encontró la categoría">
+        <ng-option *ngFor="let category of categories" [value]="category">{{category}}</ng-option>
+     </ng-select>
     </div>
 
-    <button type="submit">Registrarse</button>
+    <button type="submit">Publicar</button>
   </form>
 </div>

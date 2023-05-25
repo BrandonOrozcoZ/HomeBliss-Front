@@ -1,40 +1,45 @@
-*{
-    padding: 0;
-    margin: 0;
-    font-family: 'Times New Roman';
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Times New Roman";
 }
 
-header{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    padding-top: 1em;
-    gap: 2em;
+header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-top: 1em;
+  gap: 2em;
 }
 
-ul{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    list-style: none;
-    gap: 2em;
-    width: 100%;
+ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  gap: 2em;
+  width: 100%;
 }
 
-a{
-    text-decoration: none;
-    color: rgba(0, 204, 255, 0.952);
-    cursor: pointer;
-    padding: 0.7em;
+a:active {
+  background-color: #edebff;
+  border-radius: 7px;
 }
 
-a:hover{
-    background-color: rgba(145, 233, 255, 0.884);
-    border-radius: 7px;
+a {
+  text-decoration: none;
+  color: #a899ff;
+  cursor: pointer;
+  padding: 0.7em;
 }
 
-app-search-bar{
-    align-self: center;
-    justify-self: center;
+a:hover {
+  background-color: #edebff;
+  border-radius: 7px;
+}
+
+app-search-bar {
+  align-self: center;
+  justify-self: center;
 }
