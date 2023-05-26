@@ -6,7 +6,12 @@
 .home {
   display: grid;
   grid-template-rows: 0.3fr repeat(4, 1fr);
-  row-gap: 2em;
+  row-gap: 1em;
+}
+
+.continue a{
+  text-decoration: none;
+  color: #a899ff;
 }
 
 .container-categories {
@@ -14,6 +19,9 @@
 }
 
 .most-selled {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
   grid-row: 3/4;
 }
 
@@ -49,6 +57,12 @@
 .categories p {
   font-size: 20px;
   color: #595959;
+}
+
+.top{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1em;
 }
 
 hr {

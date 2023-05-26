@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ProductDTO } from 'src/app/model/product-dto';
 
 @Component({
   selector: 'app-product',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent {
+
+  @Input("product") product: ProductDTO;
+
+  constructor(){
+    this.product = new ProductDTO();
+  }
+
+  
 
 }
