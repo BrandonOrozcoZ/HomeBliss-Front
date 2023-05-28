@@ -1,7 +1,7 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: "Popp";
+  font-family: "Poppins-Medium";
   color: #5d5d5d;
 }
 
@@ -18,15 +18,15 @@ form {
   gap: 1em;
 }
 
-a{
-    align-self: center;
-    color: #14147A;
-    text-decoration: none;
+a {
+  align-self: center;
+  color: #14147a;
+  text-decoration: none;
 }
 
-a:hover{
-    cursor: pointer;
-    text-decoration: underline;
+a:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 hr {

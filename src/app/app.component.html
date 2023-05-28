@@ -2,9 +2,22 @@
   <p>Homebliss</p>
   <ul>
     <li><a href="">Inicio</a></li>
-    <li><a href="/login">Login</a></li>
-    <li><a href="/signup">Registro</a></li>
+    <li><a href="/products">Productos</a></li>
+    <li><a href="/access">Acceder</a></li>
   </ul>
-  <app-search-bar></app-search-bar>
+  <form class="search" role="search" (submit)="searchProducts(search.value)">
+  <input
+    #search
+    type="search"
+    placeholder="Buscar productos"
+    aria-label="Search"/>
+</form>
 </header>
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+crossorigin="anonymous"
+referrerpolicy="no-referrer"
+/>
 <router-outlet></router-outlet>

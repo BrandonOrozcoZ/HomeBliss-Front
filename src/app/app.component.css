@@ -1,14 +1,14 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: "Times New Roman";
+  font-family: "Poppins-Medium";
 }
 
 header {
   display: flex;
   flex-direction: row;
-  width: 100%;
   padding-top: 1em;
+  width: 100%;
   gap: 2em;
 }
 
@@ -39,7 +39,26 @@ a:hover {
   border-radius: 7px;
 }
 
-app-search-bar {
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: left;
   align-self: center;
-  justify-self: center;
+  padding: 5px;
+  width: 20%;
+}
+
+.search input {
+  border-radius: 20px;
+  background-color: #e2edff;
+  border: none;
+  letter-spacing: 0.5px;
+  padding: 5px;
+  font-size: 14px;
+  height: 30px;
+  width: 100%;
+}
+
+.search input::placeholder {
+  color: #a899ff;
 }

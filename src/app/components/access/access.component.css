@@ -1,9 +1,10 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "Poppins-Medium";
 }
 
-.container{
+.container {
   display: flex;
   justify-content: center;
   padding: 2em;
@@ -11,10 +12,10 @@
   height: 90vh;
 }
 
-app-signup{
+app-signup {
   width: 40%;
 }
 
-app-login{
+app-login {
   width: 40%;
 }

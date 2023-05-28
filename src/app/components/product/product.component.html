@@ -1,3 +1,9 @@
-<div class="container">
-    <img src="{{this.product.images[0]}}">
+<div class="product-card" (click)="getProductView()" routerLink="/product/{{product.id}}" role="button">
+  <img src="{{product.images[0]}}" alt="foto" />
+  <hr />
+  <h3>{{product.name}}</h3>
+  <div class="categories">
+    <p *ngFor="let category of product.categories">{{category}}</p>
+  </div>
+  <h3>${{product.price}}</h3>
 </div>

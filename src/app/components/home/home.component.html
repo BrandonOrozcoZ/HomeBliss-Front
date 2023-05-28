@@ -1,34 +1,31 @@
 <div class="home">
   <div class="container-categories">
     <div class="title">
-      <img src="" alt="Foto">
+      <img src="" alt="Foto" />
       <p>Categorías</p>
     </div>
     <div class="categories">
-      <p>Cocina, Tecnología, Deportes y mucho más...</p>
-      <hr>
+      <a href="/categories">
+        <p>Cocina, Tecnología, Deportes y mucho más...</p>
+        <hr />
+        <img src="" alt="Foto" />
+      </a>
     </div>
     <div class="continue">
-      <a href="/categories"><img src="" alt="foto">Seguir comprando</a>
+      <a href="/categories">Ver todas las categorías<img src="" alt="foto"
+      /></a>
     </div>
   </div>
   <div class="most-selled">
     <div class="title">
       <p>Productos más vendidos</p>
-      <hr>
+      <hr />
     </div>
     <div class="top">
       <!-- <app-product *ngFor="let product of products" [product]="product"></app-product> -->
-      <app-product></app-product>
-      <app-product></app-product>
-      <app-product></app-product>
-      <app-product></app-product>
-      <app-product></app-product>
-      <app-product></app-product>
-      <app-product></app-product>
-      <app-product></app-product>
-      <app-product></app-product>
-      <app-product></app-product>
+      <div class="container" *ngFor="let product of products">
+        <img src="{{this.product.images[0]}}" alt="foto">
+      </div>
     </div>
   </div>
 </div>

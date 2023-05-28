@@ -1,77 +1,77 @@
-*{
-    padding: 0;
-    margin: 0;
-    font-family: 'Popp';
-    color: #5d5d5d;
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins-Medium";
+  color: #5d5d5d;
 }
 
-.signup{
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(170, 136, 153, 0.1);
-    padding: 1em;
-    gap: 1em;
-    border-radius: 10px;
+.signup {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(170, 136, 153, 0.1);
+  padding: 1em;
+  gap: 1em;
+  border-radius: 10px;
 }
 
-hr{
-    border: 1px #5d5d5d solid;
+hr {
+  border: 1px #5d5d5d solid;
 }
 
-form{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 1em;
-    row-gap: 0.5em;
+form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 1em;
+  row-gap: 0.5em;
 }
 
-.detail{
-    display: flex;
-    flex-direction: column;
+.detail {
+  display: flex;
+  flex-direction: column;
 }
 
-.name{
-    grid-column: 1/3;
+.name {
+  grid-column: 1/3;
 }
 
-.lastname{
-    grid-column: 3/5;
+.lastname {
+  grid-column: 3/5;
 }
 
-.email{
-    grid-column: 1/5;
+.email {
+  grid-column: 1/5;
 }
 
-.address{
-    grid-column: 1/3;
+.address {
+  grid-column: 1/3;
 }
 
-.phone{
-    grid-column: 3/5;
+.phone {
+  grid-column: 3/5;
 }
 
-.password{
-    grid-column: 1/3;
+.password {
+  grid-column: 1/3;
 }
 
-.repeatPassword{
-    grid-column: 3/5;
+.repeatPassword {
+  grid-column: 3/5;
 }
 
-button{
-    border: none;
-    border-radius: 7px;
-    height: 2.5em;
-    background: #A899FF;
-    grid-column: 1/5;
-    margin-top: 1.5em;
-    color: black;
+button {
+  border: none;
+  border-radius: 7px;
+  height: 2.5em;
+  background: #a899ff;
+  grid-column: 1/5;
+  margin-top: 1.5em;
+  color: black;
 }
 
-input{
-    border: none;
-    border-radius: 7px;
-    font-size: 17px;
-    height: 1.7em;
-    padding-left: 4px;
+input {
+  border: none;
+  border-radius: 7px;
+  font-size: 17px;
+  height: 1.7em;
+  padding-left: 4px;
 }

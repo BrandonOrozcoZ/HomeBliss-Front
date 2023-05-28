@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ProductDTO } from 'src/app/model/product-dto';
+import { ProductGetDTO } from 'src/app/model/product-get-dto';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +9,10 @@ import { ProductDTO } from 'src/app/model/product-dto';
 })
 export class HomeComponent {
 
-  products: ProductDTO[];
+  products: ProductGetDTO[];
 
-  constructor(){
-    this.products = []; 
+  constructor(private productService: ProductService){
+    this.products = this.productService.getList(); 
   }
 
 }

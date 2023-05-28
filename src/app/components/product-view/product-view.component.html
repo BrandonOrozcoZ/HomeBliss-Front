@@ -1,1 +1,25 @@
-<p>product-view works!</p>
+<div class="container">
+  <div class="product">
+    <div class="photo">
+      <img src="" alt="foto" />
+      <i class="fa-regular fa-heart"></i>
+    </div>
+    <div class="details">
+      <h2>Cortina LED</h2>
+      <h3>$240000</h3>
+      <hr/>
+      <p>Con esta cortina Led podrás decorar tus
+        espacios un ambiente diferente, puedes
+        usarla en tu habitación, estudio y sala.
+        Dale una nueva luz a tus espacios creando
+        ambientes armónicos.</p>
+      <p class="stock">Stock</p>
+
+      <form>
+        <input type="number" max="20" min="1" placeholder="1"/>
+        <button name="buy" type="submit" (click)="buy()">Comprar ahora</button>
+        <button name="add" type="submit" (click)="addToCart()">Agregar al Carrito</button>
+      </form>
+    </div>
+  </div>
+</div>

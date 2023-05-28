@@ -1,0 +1,83 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins-Medium";
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product {
+  display: flex;
+  margin-top: 10em;
+  height: 25em;
+  width: 60%;
+  gap: 1em;
+}
+
+.photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  height: 25em;
+  border: 1px solid #a899ff;
+  border-radius: 5px;
+}
+
+.photo img {
+  width: 100%;
+  height: 25em;
+  align-self: center;
+  justify-self: center;
+}
+
+i {
+  align-self: flex-start;
+  justify-self: flex-end;
+  cursor: pointer;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  height: 25em;
+}
+
+hr {
+  border: 1px solid #a899ff;
+}
+
+p {
+  margin-top: 1em;
+}
+
+form {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 25em;
+  gap: 1em;
+}
+
+input {
+  height: 2.1em;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid #a899ff;
+  box-shadow: 0 0 10px 1px rgb(51 51 51 / 23%);
+}
+
+button {
+  height: 2.4em;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid #a899ff;
+  background-color: #a899ff;
+  box-shadow: 0 0 10px 1px rgb(51 51 51 / 23%);
+  width: 14em;
+  cursor: pointer;
+}

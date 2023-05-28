@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductDTO } from 'src/app/model/product-dto';
+import { ProductGetDTO } from 'src/app/model/product-get-dto';
 
 @Component({
   selector: 'app-product',
@@ -8,11 +10,17 @@ import { ProductDTO } from 'src/app/model/product-dto';
 })
 export class ProductComponent {
 
-  @Input("product") product: ProductDTO;
+  @Input("product") product: ProductGetDTO;
 
-  constructor(){
-    this.product = new ProductDTO();
+  constructor(private router: Router){
+    this.product = new ProductGetDTO();
   }
+
+  public getProductView() {
+    this.router.navigate(['product']);
+  }
+
+
 
   
 

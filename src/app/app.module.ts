@@ -8,7 +8,6 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { NewProductComponent } from './components/new-product/new-product.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +15,12 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AccessComponent } from './components/access/access.component';
+import { CategoryListComponent } from './components/category-list/category-list.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
+import { CartComponent } from './components/cart/cart.component';
+import { SearchComponent } from './components/search/search.component';
+import { ProductManagementComponent } from './components/product-management/product-management.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -25,9 +30,14 @@ import { AccessComponent } from './components/access/access.component';
     SignupComponent,
     ProductComponent,
     ProductViewComponent,
-    SearchBarComponent,
     NewProductComponent,
-    AccessComponent
+    AccessComponent,
+    CategoryListComponent,
+    FavoritesComponent,
+    CartComponent,
+    SearchComponent,
+    ProductManagementComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
