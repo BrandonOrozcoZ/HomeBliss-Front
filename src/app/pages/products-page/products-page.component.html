@@ -1,0 +1,19 @@
+<div id="products-page">
+    <div class="app-container">
+        <div class="title-section" *ngIf="type != 'ALL'">
+            <h3>{{ type }}</h3>
+        </div>
+        <form class="search-private" action="/products/ALL" method="GET" (ngSubmit)="search($event)">
+            <input placeholder="Ingresa la búsqueda..." [value]="defQuery" class="search-private-input" type="text" name="q">
+            <button class="search-private-button" type="submit">BUSCAR <i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        <div class="ProductsPageContentError" *ngIf="products.length == 0">
+            <h3>¡NO TENEMOS PRODUCTOS EN ESTE MOMENTO!</h3>
+            <p>Próximamente...</p>
+        </div>
+        
+        <div class="ProductsPageContent">
+            <app-product-list [products]="products"></app-product-list>
+        </div>
+    </div>
+</div>

@@ -24,42 +24,41 @@ export class NewProductComponent {
     private route: ActivatedRoute,
     private productService: ProductService
   ) {
-    this.categories = [];
+    this.categories = productService.getCategories().map(c => c.name);
     this.idProduct = 0;
-    this.getCategories();
     this.product = new ProductGetDTO();
 
     this.route.params.subscribe((params) => {
       this.idProduct = params['id'];
-      let productObject = this.productService.get(this.idProduct);
-      if (productObject != null) {
-        this.product = productObject;
-        console.log(this.product);
-        this.isEdit = true;
+      if (this.idProduct) {
+        this.productService.get(this.idProduct).then(productObject => {
+          if (!productObject) return;
+          this.product = productObject;
+          this.isEdit = true;
+        });
       }
     });
   }
 
-  private getCategories() {
-    this.categories.push('Tecnología');
-    this.categories.push('Deporte');
-    this.categories.push('Vehículo');
-    this.categories.push('Zapatos');
-  }
-
   public createProduct() {
     if (this.product.categories.length > 0) {
-      if (this.product.images != null && this.product.images.length > 0) {
+      if (this.files && this.files.length > 0) {
+        const files = this.files ? Array.from(Array(this.files.length).keys()).map((_, idx) => this.files[idx]) : [];
         if (!this.isEdit) {
-          this.productService.products.push(this.product);
-          this.toastr.success('Se ha creado correctamente el producto');
+          this.productService.create(this.product, files).then(product => {
+            this.toastr.success('Se ha creado correctamente el producto');
+            this.router.navigate(['/profile/products']);
+          }).catch(res => {
+            return this.toastr.warning(String(res.error.answer));
+          });
         } else {
-          this.productService.products = this.productService.update(
-            this.product
-          );
-          this.toastr.success('Se ha actualizado correctamente el producto');
+          this.productService.update(this.product, files).then(product => {
+            this.toastr.success('Se ha actualizado correctamente el producto');
+            this.router.navigate(['/profile/products']);
+          }).catch(res => {
+            return this.toastr.warning(String(res.error.answer));
+          });
         }
-        this.router.navigate(['a']);
       } else {
         this.toastr.warning('Debe seleccionar al menos una imagen');
       }
@@ -68,9 +67,22 @@ export class NewProductComponent {
     }
   }
 
+  public changeImages(url: any) {
+    this.product.images = [url];
+  }
+
   public validateImages(event: any) {
     if (event.target.files.length > 0) {
-      this.product.images = event.target.files;
+      this.files = event.target.files;
+
+      const self = this;
+      const reader = new FileReader();
+      reader.onload = function (e: any) {
+        self.changeImages(e.target.result);
+      }
+      reader.readAsDataURL(this.files[0]);
+
+      
     }
   }
 }

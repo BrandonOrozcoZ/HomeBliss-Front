@@ -1,42 +1,60 @@
 <div class="create-product">
-    <div class="title">
-        <img src="" alt="">
-        <h2>Vender</h2>
-    </div>
-  <form #productForm="ngForm" ngNativeValidate (ngSubmit)="createProduct()">
+  <div class="title-section">
+    <ng-container *ngIf="isEdit">
+      <h2>Editar Producto</h2>
+    </ng-container>
+    <ng-container *ngIf="!isEdit">
+      <h2>Crear Producto</h2>
+    </ng-container>
+  </div>
+  <div class="app-container">
+    <form #productForm="ngForm" ngNativeValidate (ngSubmit)="createProduct()">
 
-    <div class="detail name">
-      <label for="name-input">Nombre</label>
-      <input type="text" id="name-input" name="name-input" required maxlength="100" [(ngModel)]="product.name"/>
-    </div>
+      <div class="detail-left">
+        <div class="detail name">
+          <label class="form-label" for="name-input">Nombre</label>
+          <input class="form-control" type="text" id="name-input" name="name-input" required maxlength="100"
+            [(ngModel)]="product.name" />
+        </div>
 
-    <div class="detail description">
-        <label for="description-input">Descripción</label>
-        <input type="text" id="description-input" name="description-input" required maxlength="100" [(ngModel)]="product.description"/>
-    </div>
+        <div class="detail description">
+          <label class="form-label" for="description-input">Descripción</label>
+          <input class="form-control" type="text" id="description-input" name="description-input" required
+            maxlength="100" [(ngModel)]="product.description" />
+        </div>
 
-    <div class="detail price">
-      <label for="price-input">Precio</label>
-      <input type="number" id="price-input" name="price-input" required maxlength="150" [(ngModel)]="product.price"/>
-    </div>
+        <div class="detail price">
+          <label class="form-label" for="price-input">Precio</label>
+          <input class="form-control" type="number" id="price-input" name="price-input" required maxlength="150"
+            [(ngModel)]="product.price" />
+        </div>
 
-    <div class="detail stock">
-      <label for="stock-input">Unidades</label>
-      <input type="number" id="stock-input" name="stock-input" required maxlength="100" [(ngModel)]="product.stock"/>
-    </div>
+        <div class="detail stock">
+          <label class="form-label" for="stock-input">Unidades</label>
+          <input class="form-control" type="number" id="stock-input" name="stock-input" required maxlength="100"
+            [(ngModel)]="product.stock" />
+        </div>
 
-    <div class="detail image">
-      <label class="upload" for="image"><img *ngIf="isEdit" src="{{product.images[0]}}"><i *ngIf="!isEdit" class="fa-regular fa-image"></i></label>
-      <input type="file" id="image" name="image" accept="image/png, image/jpeg" multiple (change)="validateImages($event)">
-    </div>
+        <div class="detail categories">
+          <label class="form-label" for="categories-select">Categoria</label>
+          <ng-select class="categories-select" name="categories-select" [(ngModel)]="product.categories"
+            [multiple]="true" placeholder="Selecciona una categoria" notFoundText="No se encontró la categoría">
+            <ng-option *ngFor="let category of categories" [value]="category">{{category}}</ng-option>
+          </ng-select>
+        </div>
+      </div>
 
-    <div class="detail categories">
-      <label for="categories-select">Categoria</label>
-      <ng-select class="categories-select" name="categories-select" [(ngModel)]="product.categories" [multiple]="true" placeholder="Selecciona una categoria" notFoundText="No se encontró la categoría">
-        <ng-option *ngFor="let category of categories" [value]="category">{{category}}</ng-option>
-     </ng-select>
-    </div>
-
-    <button type="submit">{{isEdit ? "Actualizar": "Publicar"}}</button>
-  </form>
+      <div class="detail-right">
+        <div class="detail image">
+          <label class="form-label" class="upload" for="image"><img *ngIf="isEdit || product.images.length > 0" src="{{product.images[0]}}"><i
+              *ngIf="!(isEdit || product.images.length > 0)" class="fa-regular fa-image"></i></label>
+          <input class="form-control" type="file" id="image" name="image" accept="image/png, image/jpeg" multiple
+            (change)="validateImages($event)">
+        </div>
+      </div>
+      <div class="bottom">
+        <button class="btn-submit" type="submit">{{isEdit ? "Actualizar": "Publicar"}}</button>
+      </div>
+    </form>
+  </div>
 </div>

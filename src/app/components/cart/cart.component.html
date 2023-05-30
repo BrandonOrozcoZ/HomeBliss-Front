@@ -1,26 +1,36 @@
-<div class="container">
-    <div class="title">
-        <img src="" alt="Foto">
-        <h2>Carrito</h2>
+<div id="cart-page">
+  <div class="app-container">
+    <div class="title-section">
+      <h3>Carrito</h3>
     </div>
-    <ul class="table">
-        <li class="header">
-          <div class="col col-1"></div>
-          <div class="col col-2">Producto</div>
-          <div class="col col-3">Precio</div>
-          <div class="col col-4">Unidades</div>
-          <div class="col col-6">Subtotal</div>
-        </li>
-        <li *ngFor="let product of products" class="row">
-          <div class="col col-1"><span class="delete" (click)="delete()"><i class="fa-solid fa-trash-can"></i></span></div>
-          <div class="col col-2" data-label="product">
-            <div class="image">
-              <img src="{{product.images[0]}}" alt="foto"/>
-            </div>
-            {{ product.name }}</div>
-          <div class="col col-4" data-label="price">{{ product.price }}</div>
-          <div class="col col-5" data-label="stock">{{ product.stock}}</div>
-          <div class="col col-6" data-label="subtotal">{{ product.stock * product.price}}</div>
-        </li>
-    </ul>
+    <div class="ProductsPageContentError" *ngIf="products.length == 0">
+      <h3>¡NO SE HAN AGREGADO PRODUCTOS EN ESTE MOMENTO!</h3>
+      <p>¡Agrega los productos al carrito y compra!</p>
+    </div>
+
+    <div class="ProductsPageContent" *ngIf="products.length > 0">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <th scope="row" data-label="id">{{ product.id }}</th>
+            <td data-label="images"><img src="{{product.images[0]}}" alt="foto"/></td>
+            <td data-label="name">{{ product.name }}</td>
+            <td data-label="name">{{ product.count }}</td>
+            <td>
+              <button class="btn btn-danger" (click)="remove(product)"><i class="fa-solid fa-trash-can"></i> ELIMINAR</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

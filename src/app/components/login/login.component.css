@@ -1,68 +1,8 @@
-* {
-  padding: 0;
-  margin: 0;
-  font-family: "Poppins-Medium";
-  color: #5d5d5d;
-}
-
-.login {
-  display: flex;
-  flex-direction: column;
-  padding: 1em;
-  gap: 1em;
+button {
+    width: 100%;
 }
 
 form {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-}
-
-a {
-  align-self: center;
-  color: #14147a;
-  text-decoration: none;
-}
-
-a:hover {
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-hr {
-  border: 1px #5d5d5d solid;
-}
-
-input {
-  border: 1px #5d5d5d solid;
-  border-radius: 7px;
-  font-size: 17px;
-  height: 1.7em;
-  padding-left: 4px;
-}
-
-button {
-  border: none;
-  border-radius: 7px;
-  height: 2.5em;
-  background: #a899ff;
-  grid-column: 1/5;
-  margin-top: 1em;
-  color: black;
-}
-
-.credential {
-  display: flex;
-  flex-direction: column;
-}
-
-h2 {
-  margin: 0;
-  padding: 0;
-}
-
-hr {
-  margin: 0;
-  padding: 0;
-  width: 100%;
+    max-width: 700px;
+    margin: auto;
 }

@@ -1,9 +1,15 @@
-<div class="container">
-  <div class="title">
-    <img src="" alt="Foto" />
-    <h2>Favoritos</h2>
-  </div>
-  <div class="favorite-list" >
-    <app-product *ngFor="let product of products" [product]="product"></app-product>
+<div id="favorites-page">
+  <div class="app-container">
+      <div class="title-section">
+          <h3>Mis Favoritos</h3>
+      </div>
+      <div class="ProductsPageContentError" *ngIf="products.length == 0">
+          <h3>¡NO TIENES NINGUNO!</h3>
+          <p>Recuerda agregarlo dandole a la estrella...</p>
+      </div>
+      
+      <div class="ProductsPageContent">
+          <app-product-list [products]="products"></app-product-list>
+      </div>
   </div>
 </div>

@@ -12,6 +12,7 @@ export class FavoritesComponent {
   products: ProductGetDTO[];
 
   constructor(private productService: ProductService){
-    this.products = this.productService.getList(); 
+    this.products = [];
+    productService.getAllFavoriteByClient().then(ps => this.products = ps); 
   }
 }

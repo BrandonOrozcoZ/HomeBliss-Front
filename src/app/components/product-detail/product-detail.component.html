@@ -1,2 +1,13 @@
-<button (click)="addToCart()" class="btn"><i class="fa-solid
-    fa-cart-plus"></i>Agregar al carrito</button>
+<a class="ProductDetail" [href]="'/product/' + product.id">
+    <div class="ProductDetailImg">
+        <img [src]="product.images[0]" alt="">
+    </div>
+    <div class="ProductDetailInfo">
+        <div class="ProductDetailName">
+            <h2>{{ product.name }}</h2>
+        </div>
+        <div class="ProductDetailPrice">
+            <p>$ {{product.price }}</p>
+        </div>
+    </div>
+</a>

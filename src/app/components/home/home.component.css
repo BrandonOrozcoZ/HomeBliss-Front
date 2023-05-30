@@ -1,111 +1,29 @@
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Poppins-Medium";
+#home-page .app-container {
+  margin-top: 20px;
 }
 
-.home {
+.Categories {
+  padding: 20px 0;
   display: grid;
-  grid-template-rows: 0.3fr repeat(4, 1fr);
-  row-gap: 1em;
-  padding: 7em;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
 
-.continue {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.continue a {
-  text-decoration: none;
-  color: #a899ff;
-}
-
-.container-categories {
-  grid-row: 2/3;
-}
-
-.most-selled {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  grid-row: 3/4;
-}
-
-.most-selled .title {
-  display: flex;
-  flex-direction: column;
-}
-
-.most-selled .title hr {
-  margin-top: 4px;
-  border: 1px solid #a899ff;
-  width: 30%;
-}
-
-.categories {
-  display: flex;
-  flex-direction: column;
-  background-color: #edebff;
-  width: 100%;
-  height: 14em;
-  border-radius: 7px;
-}
-
-.categories a {
+.Category {
+  background-color: #EBDEF0;
+  border-radius: 10px;
+  padding: 40px 0;
+  justify-content: space-between;
+  color: #7D3C98;
   cursor: pointer;
-  text-decoration: none;
-  color: #a899ff;
-  width: 100%;
-  height: 100%;
-  padding: 1em;
-}
-
-.categories img {
-  align-self: flex-end;
-  justify-self: flex-end;
-}
-
-.title {
+  text-align: center;
+  gap: 20px;
   display: flex;
-  align-items: center;
-  margin-bottom: 0.5em;
+  flex-direction: column;
+  transition: 0.4s;
 }
 
-.title p {
-  font-size: 24px;
-  color: #a899ff;
-}
-
-.categories p {
-  font-size: 20px;
-  color: #595959;
-}
-
-.top {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1em;
-}
-
-hr {
-  margin-top: 4px;
-  border: 1px solid #595959;
-  width: 60%;
-}
-
-.container {
-  align-self: center;
-  justify-self: center;
-  border: 1px solid #a899ff;
-  height: 100%;
-  width: 20em;
-  overflow: hidden;
-  font-family: "Poppins-Medium";
-}
-
-.container img{
-  height: 100%;
-  width: 20em;
+.Category:hover {
+  transform: scale(1.1);
+  color: #4A235A;
 }

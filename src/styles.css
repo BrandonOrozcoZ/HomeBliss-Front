@@ -3,7 +3,185 @@
 @import "ngx-toastr/toastr";
 @import "~@ng-select/ng-select/themes/default.theme.css";
 
-@font-face {
-  font-family: "Poppins";
-  src: url("./assets/fonts/Poppins-Medium.ttf");
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.app-container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1300px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.app-container.top {
+  margin-top: 20px;
+}
+
+header {
+  background-color: #BB8FCE;
+  border-bottom: 2px solid #7D3C98;
+}
+
+header .app-container {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+header h1 {
+  font-weight: bold;
+  color: #4A235A;
+  transition: 0.2s;
+}
+
+header h1:hover {
+  color: white;
+}
+
+header nav {
+  display: flex;
+  gap: 5px;
+}
+
+header .HeaderContent {
+  flex: 1;
+}
+
+header nav a {
+  color: #7a3399 !important;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  outline: none;
+  padding: 10px;
+  transition: 0.4s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+header nav a:hover {
+  color: #4A235A;
+  background-color: #D7BDE2;
+}
+
+.title-section {
+  font-weight: bold;
+  text-align: center;
+  margin: 20px auto;
+  border-bottom: 2px solid #C39BD3;
+  padding: 20px 0;
+  color: #6C3483;
+  font-family: inherit;
+  max-width: 40%;
+}
+
+.title-section > * {
+  font-weight: inherit;
+}
+
+.button-title {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.button-title a {
+  color: white;
+  background-color: #9B59B6;
+  padding: 10px 20px;
+  border-radius: 0.5rem;
+}
+
+.search-private {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.search-private-input {
+  outline: none;
+  border: none;
+  flex: 1;
+  padding: 0px 10px;
+}
+
+.search-private-button {
+  outline: none;
+  border: none;
+  padding: 10px 30px;
+  font-weight: bold;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-submit {
+  background-color: #7D3C98;
+  border: none;
+  padding: 10px;
+  border-radius: 0.5rem;
+  color: white;
+}
+
+.btn-submit:hover {
+  background-color: #b271ce;
+}
+
+.product-card {
+  display: flex;
+  gap: 10px;
+}
+
+.product-form-card {
+  display: flex;
+  gap: 10px;
+}
+
+.product-form-card input {
+  outline: none;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product .details {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-count {
+  color: white;
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 10px;
+  padding: 10px;
+  width: 32px;
+  height: 32px;
+}
+
+.cart-link {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.cart-link span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

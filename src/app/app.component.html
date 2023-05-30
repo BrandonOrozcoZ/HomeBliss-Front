@@ -1,23 +1,30 @@
 <header>
-  <p>Homebliss</p>
-  <ul>
-    <li><a href="">Inicio</a></li>
-    <li><a href="/products">Productos</a></li>
-    <li><a href="/access">Acceder</a></li>
-  </ul>
-  <form class="search" role="search" (submit)="searchProducts(search.value)">
-  <input
-    #search
-    type="search"
-    placeholder="Buscar productos"
-    aria-label="Search"/>
-</form>
+  <div class="app-container">
+    <a class="app-main-link-a" href="/">
+      <h1><i class="fa-solid fa-house fa-1x"></i> Homebliss</h1>
+      <p class="app-main-link" *ngIf="isModerator">Moderador</p>
+    </a>
+    
+    <div class="HeaderContent">
+      
+    </div>
+    <nav *ngIf="isLogged">
+      <ng-container *ngIf="isClient">
+        <a class="cart-link" href="/cart"><i class="fa-solid fa-cart-shopping"></i> Carrito <span class="cart-count">{{ cartCount }}</span></a>
+        <a href="/profile/favorites"><i class="fa-solid fa-star"></i> Productos Favoritos</a>
+        <a href="/profile/products"><i class="fa-solid fa-people-carry-box"></i> Mis Productos</a>
+      </ng-container>
+      <ng-container *ngIf="isModerator">
+        <a href="/admin/products"><i class="fa-solid fa-boxes-stacked"></i> Todos los Productos</a>
+      </ng-container>
+      <a (click)="clearSession()"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a>
+    </nav>
+    <nav *ngIf="!isLogged">
+      <a href="/login"><i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión</a>
+    </nav>
+  </div>
 </header>
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-crossorigin="anonymous"
-referrerpolicy="no-referrer"
-/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+  integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
 <router-outlet></router-outlet>

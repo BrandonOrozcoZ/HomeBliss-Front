@@ -1,0 +1,34 @@
+<div class="container">
+    <nav class="AdminProductsNav">
+        <a href="/admin/products/SINREVISAR">Sin Revisar</a>
+        <a href="/admin/products/AUTORIZADO">Autorizados</a>
+        <a href="/admin/products/DENEGADO">Denegados</a>
+    </nav>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Imagen</th>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Descripción</th>
+          <th scope="col" *ngIf="stateSearch == 'SINREVISAR'">Opciones</th>
+          <th scope="col" *ngIf="stateSearch != 'SINREVISAR'">Razón</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td scope="row" data-label="images"><img src="{{product.images[0]}}" alt="foto"/></td>
+          <th data-label="id">{{ product.id }}</th>
+          <td data-label="name">{{ product.name }}</td>
+          <td data-label="description">{{ product.description }}</td>
+          <td *ngIf="stateSearch == 'SINREVISAR'">
+            <button class="btn btn-primary" (click)="auth(product)">Autorizar</button>
+            <button class="btn btn-danger" (click)="denied(product)">Denegar</button>
+          </td>
+          <td *ngIf="stateSearch != 'SINREVISAR'">
+            {{ product.reason }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>

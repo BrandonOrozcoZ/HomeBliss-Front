@@ -1,0 +1,17 @@
+.ProductsPageContent {
+    margin-top: 40px;
+}
+
+.ProductsPageContentError {
+    text-align: center;
+    margin-top: 80px;
+    color: #444;
+    font-weight: bold;
+    background-color: #eee;
+    padding: 50px 0;
+    border-radius: 10px;
+}
+
+.search-private {
+    margin-top: 20px;
+}

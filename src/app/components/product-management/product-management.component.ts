@@ -11,16 +11,19 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductManagementComponent {
   products: ProductGetDTO[];
 
-  constructor(private productServicio: ProductService, private toastr: ToastrService) {
+  constructor(private productService: ProductService, private toastr: ToastrService) {
     this.products = [];
-  }
-
-  ngOnInit(): void {
-    this.products = this.productServicio.getList();
+    productService.findMyProducts().then(loaded => {
+      this.products = loaded;
+    });
   }
 
   public delete(product: ProductGetDTO) {
-    this.products = this.products.filter((i) => i != product);
-    this.toastr.success("Se ha eliminado correctamente");
+    this.productService.delete(product.id).then(res => {
+      this.products = this.products.filter((i) => i != product);
+      this.toastr.success(String(res?.answer));
+    }).catch(res => {
+      return this.toastr.warning(String(res.error.answer));
+    });
   }
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,13 +15,17 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { AccessComponent } from './components/access/access.component';
+import { AccessComponent } from './pages/access/access.component';
 import { CategoryListComponent } from './components/category-list/category-list.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { CartComponent } from './components/cart/cart.component';
 import { SearchComponent } from './components/search/search.component';
 import { ProductManagementComponent } from './components/product-management/product-management.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { AuthInterceptor } from './interceptors/AuthInterceptor';
+import { AdminProductsPageComponent } from './pages/admin-products-page/admin-products-page.component';
+import { ProductsPageComponent } from './pages/products-page/products-page.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +42,10 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     CartComponent,
     SearchComponent,
     ProductManagementComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    AdminProductsPageComponent,
+    ProductsPageComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
@@ -46,9 +54,12 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     FormsModule,
     CommonModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,27 +1,36 @@
-<div class="container">
+<div class="app-container">
     <div class="create">
-        <button type="button" routerLink="/registerProduct" class="btn" ><i class="fa-solid fa-plus"></i>Crear</button>
+        <button type="button" class="btn btn-success" routerLink="/profile/products/create" ><i class="fa-solid fa-plus"></i> Crear Producto</button>
     </div>
-  <ul class="table">
-    <li class="header">
-      <div class="col col-1">ID</div>
-      <div class="col col-2">Nombre</div>
-      <div class="col col-3">Descripción</div>
-      <div class="col col-4">Precio</div>
-      <div class="col col-5">Unidades</div>
-      <div class="col col-6">Imagen</div>
-      <div class="col col-7">Categorías</div>
-      <div class="col col-8"></div>
-    </li>
-    <li *ngFor="let product of products" class="row">
-      <div class="col col-1" data-label="id">{{ product.id }}</div>
-      <div class="col col-3" data-label="name">{{ product.name }}</div>
-      <div class="col col-2" data-label="description">{{ product.description }}</div>
-      <div class="col col-4" data-label="price">{{ product.price }}</div>
-      <div class="col col-5" data-label="stock">{{ product.stock }}</div>
-      <div class="col col-6" data-label="images"><img src="{{product.images[0]}}" alt="foto"/></div>
-      <div class="col col-7" data-label="categories"><p *ngFor="let category of product.categories">{{category}}</p></div>
-      <div class="col col-8"><span class="edit" routerLink="/editProduct/{{product.id}}"><i class="fa-solid fa-pen"></i></span><span class="delete" (click)="delete(product)"><i class="fa-solid fa-trash-can"></i></span></div>
-    </li>
-  </ul>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Imagen</th>
+         
+          <th scope="col">Nombre</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Unidades</th>
+          
+          <th scope="col">Categorías</th>
+          <th scope="col">Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <th scope="row" data-label="id">{{ product.id }}</th>
+          <td data-label="images"><img src="{{product.images[0]}}" alt="foto"/></td>
+          <td data-label="name">{{ product.name }}</td>
+          <td data-label="description">{{ product.description }}</td>
+          <td data-label="price">{{ product.price }}</td>
+          <td data-label="stock">{{ product.stock }}</td>
+          <td data-label="categories"><p *ngFor="let category of product.categories">{{category}}</p></td>
+          <td class="btn-group">
+            <button class="btn btn-primary" routerLink="/editProduct/{{product.id}}"><i class="fa-solid fa-pen"></i></button>
+            <button class="btn btn-danger" (click)="delete(product)"><i class="fa-solid fa-trash-can"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 </div>

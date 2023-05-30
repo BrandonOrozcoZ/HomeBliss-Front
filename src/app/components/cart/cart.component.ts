@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { ProductCart } from 'src/app/model/product-cart';
 import { ProductGetDTO } from 'src/app/model/product-get-dto';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -9,13 +11,15 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class CartComponent {
 
-  products: ProductGetDTO[] = [];
+  products: ProductCart[] = [];
 
-  constructor(private productService: ProductService){
-    this.products = this.productService.getList();
+  constructor(private cartService: CartService){
+    this.products = cartService.getList;
   }
 
-  public delete(){
-
+  remove(product: ProductCart) {
+    this.products = this.cartService.delete(product.id);
   }
+
+
 }

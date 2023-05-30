@@ -1,64 +1,9 @@
-* {
-  padding: 0;
-  margin: 0;
-  font-family: "Poppins-Medium";
+.app-main-link {
+    color: inherit;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-header {
-  display: flex;
-  flex-direction: row;
-  padding-top: 1em;
-  width: 100%;
-  gap: 2em;
-}
-
-ul {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  list-style: none;
-  gap: 2em;
-  width: 100%;
-}
-
-a:active {
-  background-color: #edebff;
-  border-radius: 7px;
-}
-
-a {
-  text-decoration: none;
-  color: #a899ff;
-  cursor: pointer;
-  padding: 0.7em;
-}
-
-a:hover {
-  background-color: #edebff;
-  border-radius: 7px;
-}
-
-.search {
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  align-self: center;
-  padding: 5px;
-  width: 20%;
-}
-
-.search input {
-  border-radius: 20px;
-  background-color: #e2edff;
-  border: none;
-  letter-spacing: 0.5px;
-  padding: 5px;
-  font-size: 14px;
-  height: 30px;
-  width: 100%;
-}
-
-.search input::placeholder {
-  color: #a899ff;
+.app-main-link-a {
+    color: inherit;
 }

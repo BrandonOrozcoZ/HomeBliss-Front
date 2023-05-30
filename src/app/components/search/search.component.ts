@@ -15,7 +15,7 @@ export class SearchComponent {
 
   constructor(private router: ActivatedRoute, private productService: ProductService) {
     this.search = '';
-    this.products = this.productService.getList();
+    this.products = [];
     this.filter = [];
 
     this.router.params.subscribe((params) => {

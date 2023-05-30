@@ -1,25 +1,47 @@
-<div class="container">
+<div class="app-container top">
   <div class="product">
-    <div class="photo">
-      <img src="" alt="foto" />
-      <i class="fa-regular fa-heart"></i>
+    <div class="product-photo">
+      <img [src]="product.images[0]" alt="foto" />
+      <ng-container *ngIf="isUserLogged">
+        <button class="product-favorite" (click)="addToFavorite()">
+          <ng-container *ngIf="product.favorite">
+            <i class="fa-solid fa-star fa-3x"></i>
+            
+          </ng-container>
+          <ng-container *ngIf="!product.favorite">
+            <i class="fa-regular fa-star fa-3x"></i>
+          </ng-container>
+        </button>
+      </ng-container>
     </div>
     <div class="details">
-      <h2>Cortina LED</h2>
-      <h3>$240000</h3>
-      <hr/>
-      <p>Con esta cortina Led podrás decorar tus
-        espacios un ambiente diferente, puedes
-        usarla en tu habitación, estudio y sala.
-        Dale una nueva luz a tus espacios creando
-        ambientes armónicos.</p>
-      <p class="stock">Stock</p>
+      
+      <div class="product-info">
+        <div class="product-title">
+          <h1>{{ product.name }}</h1>
+          <p class="product-price">${{ product.price }}</p>
+        </div>
+  
+        <p class="product-detail"><span>Descripción:</span></p>
+        <p>{{ product.description }} </p>
+  
+        <p class="product-detail"><span>Stock:</span></p>
+        <p>{{product.stock}}</p>
+      </div>
 
-      <form>
-        <input type="number" max="20" min="1" placeholder="1"/>
-        <button name="buy" type="submit" (click)="buy()">Comprar ahora</button>
-        <button name="add" type="submit" (click)="addToCart()">Agregar al Carrito</button>
-      </form>
+      <ng-container *ngIf="isUserLogged">
+        <div class="product-card">
+          <form class="product-form-card" (submit)="addToCart($event)">
+            <input name="count" type="number" max="20" min="1" value="1"/>
+            <button class="btn-submit" type="submit">Agregar al Carrito</button>
+          </form>
+  
+          <button routerLink="/cart" class="btn-submit" name="buy">Comprar ahora</button>
+        </div>
+      </ng-container>
+
+      
+
     </div>
   </div>
 </div>

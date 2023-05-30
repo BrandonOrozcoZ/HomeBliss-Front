@@ -1,0 +1,27 @@
+.ProductDetail {
+    border-radius: 10px;
+    border: 2px solid #d292df;
+    transition: 0.4s;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    color: #af69bd;
+}
+
+.ProductDetail:hover {
+    border-color: #b326cf;
+}
+
+.ProductDetailImg img {
+    width: 100%;
+    border-radius: 10px;
+    max-height: 220px;
+}
+
+.ProductDetailInfo {
+    padding: 20px;
+}
+
+.ProductDetailInfo h2 {
+    margin: 0;
+}

@@ -1,47 +1,148 @@
 import { Injectable } from '@angular/core';
 import { ProductGetDTO } from '../model/product-get-dto';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { AuthService } from './auth.service';
+import { MessageDTO } from '../model/message-dto';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductModeratorGetDTO } from '../model/product-moderator-get-dto';
+import { Category } from '../model/category';
+import { ProductClientGetDTO } from '../model/product-client-get-dto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  products: ProductGetDTO[];
-  constructor() {
-    this.products = [];
-    this.products.push(this.createProduct(1, 'Televisor LG 4K', 'Descripcion 1', 3500000, 2, ['https://picsum.photos/450/225', 'https://picsum.photos/450/225'], ['TECNOLOGIA']));
-    this.products.push(this.createProduct(2, 'Tenis Nike', 'Descripcion 2', 650000, 4, ['https://picsum.photos/450/225'], ['ROPA', 'DEPORTE']));
-    this.products.push(this.createProduct(3, 'Tenis Adidas', 'Descripcion 3', 650000, 4, ['https://picsum.photos/450/225'], ['ROPA', 'COCINA']));
-    this.products.push(this.createProduct(4, 'Tenis Jordan', 'Descripcion 4', 650000, 4, ['https://picsum.photos/450/225'], ['ROPA', 'TECNOLOGIA']));
-    this.products.push(this.createProduct(5, 'Tenis valenciaga', 'Descripcion 5', 650000, 4, ['https://picsum.photos/450/225'], ['ROPA', 'DEPORTE']));
-    this.products.push(this.createProduct(6, 'Tenis classic', 'Descripcion 6', 650000, 4, ['https://picsum.photos/450/225'], ['ROPA', 'TECNOLOGIA']));
-    this.products.push(this.createProduct(7, 'Tenis reebok', 'Descripcion 7', 650000, 4, ['https://picsum.photos/450/225'], ['ROPA', 'HOGAR']));
-    this.products.push(this.createProduct(8, 'Tenis Converse', 'Descripcion 8', 650000, 4, ['https://picsum.photos/450/225'], ['ROPA', 'HOGAR', 'TECNOLOGIA']));
-    this.products.push(this.createProduct(9, 'Tenis Converse', 'Descripcion 8', 650000, 4, ['https://picsum.photos/450/225'], ['ROPA', 'DEPORTE']));
-    this.products.push(this.createProduct(10, 'Tenis Converse', 'Descripcion 8', 650000, 4, ['https://picsum.photos/450/225'], ['ROPA', 'DEPORTE']));
+
+  constructor(private http: HttpClient, private auth: AuthService) {
+    
+  }
+
+  public getCategories(): Category[] {
+    return [
+      new Category('TECNOLOGIA', 'fa-solid fa-laptop'),
+      new Category('DEPORTE', 'fa-solid fa-bicycle'),
+      new Category('HOGAR', 'fa-solid fa-home'),
+      new Category('PRODUCTIVIDAD', 'fa-solid fa-shoe-prints')
+    ]
+  }
+
+  public findProductsByCategory(type: string, query: string): Promise<ProductGetDTO[]> {
+    return this.http.get<MessageDTO<ProductGetDTO[]>>(`${environment.api}api/product/category/${type}?q=${query}`)
+      .toPromise().then(res => {
+        return res?.answer || [];
+      }).catch(_ => []);
+  }
+
+  public getProductsByState(state: string): Promise<ProductModeratorGetDTO[]> {
+    return this.http.get<MessageDTO<ProductModeratorGetDTO[]>>(`${environment.api}api/moderator/state/${state}`)
+      .toPromise().then(res => {
+        return res?.answer || [];
+      }).catch(_ => []);
+  }
+
+  public findMyProducts(): Promise<ProductGetDTO[]> {
+    return this.http.get<MessageDTO<ProductGetDTO[]>>(`${environment.api}api/product/client/${this.auth.getLogged()?.id}`)
+      .toPromise().then(res => {
+        return res?.answer || [];
+      }).catch(_ => []);
+  }
+
+  public upload(productId: number, file: File): Promise<string | undefined> {
+    const form = new FormData();
+    form.append("archive", file);
+    form.append("id", String(productId));
+    return this.http.post<MessageDTO<string>>(`${environment.api}api/product/upload`, form).toPromise().then(res => {
+      if (!res || res.error || !res.answer) {
+        return undefined;
+      }
+      return res.answer;
+    });
+  }
+
+  public delete(productId: number): Promise<MessageDTO<string> | undefined> {
+    return this.http.delete<MessageDTO<string>>(`${environment.api}api/product/${productId}`).toPromise();
   }
   
-  public getList(): ProductGetDTO[] {
-    return this.products;
+
+  public create(product: ProductGetDTO, files: File[]): Promise<ProductGetDTO | undefined> {
+
+    return this.http.post<MessageDTO<number>>(`${environment.api}api/product/create`, {
+      ...product,
+      images: [],
+      sellerCode: this.auth.getLogged()?.id
+    }).toPromise().then(res => {
+
+      if (!res || res.error) {
+        return undefined;
+      }
+
+      const productId = res.answer;
+      if (!productId) {
+        return undefined;
+      }
+
+      const promise = Promise.all(files.map(file => this.upload(productId, file)));
+
+      return promise.then(images => {
+        const newProduct = {
+          ...product,
+          id: productId,
+          sellerCode: this.auth.getLogged()?.id,
+          images
+        } as ProductGetDTO;
+        return newProduct;
+      });
+
+    });
   }
 
-  public createProduct(id: number, name:string, description:string, price:number, stock:number, images:string[], categories:string[]):ProductGetDTO{
-    let product = new ProductGetDTO();
-    product.id = id;
-    product.name = name;
-    product.description = description;
-    product.price = price;
-    product.stock = stock;
-    product.images = images;
-    product.categories = categories;
-    return product;
+  public changeMyFavorite(productId: number): Promise<boolean> {
+    return this.http.put<MessageDTO<boolean>>(`${environment.api}api/favorites/change/${productId}`, {}).toPromise().then(res => {
+      return res && res.answer || false;
+    });
   }
 
-  public get(id:number):ProductGetDTO | undefined{
-    return this.products.find(p => p.id == id);
+  public get(productId: number): Promise<ProductGetDTO | undefined> {
+    return this.http.get<MessageDTO<ProductGetDTO>>(`${environment.api}api/product/${productId}`).toPromise().then(res => {
+      return res && res.answer ? res.answer : undefined;
+    });
   }
 
-  public update(editedProduct:ProductGetDTO):ProductGetDTO[]{
-    return this.products.map(product => product.id !== editedProduct.id ? product : editedProduct);
+  public getAllFavoriteByClient(): Promise<ProductGetDTO[]> {
+    return this.http.get<MessageDTO<ProductGetDTO[]>>(`${environment.api}api/product/by-client`).toPromise().then(res => {
+      return res && res.answer ? res.answer : [];
+    }).catch(() => []);
+  }
+
+  public getByClient(productId: number): Promise<ProductClientGetDTO | undefined> {
+    return this.http.get<MessageDTO<ProductClientGetDTO>>(`${environment.api}api/product/by-client/${productId}`).toPromise().then(res => {
+      return res && res.answer ? res.answer : undefined;
+    });
+  }
+
+  public update(product: ProductGetDTO, files: File[] = []): Promise<ProductGetDTO | undefined> {
+    return Promise.all(files.map(file => this.upload(product.id, file))).then(newImages => {
+      const newProduct = {
+        ...product,
+        images: newImages.length == 0 ? product.images : newImages
+      } as ProductGetDTO;
+      return this.http.put<MessageDTO<ProductGetDTO>>(`${environment.api}api/product/${product.id}`, newProduct)
+          .toPromise()
+          .then(res => res && res.answer ? res.answer : undefined)
+    });
+  }
+
+  public updateState(productCode: number, state: string): Promise<ProductGetDTO | undefined> {
+    const reason = state === 'AUTORIZADO' ? "Se cumplió con los requisitos minimos de un producto." : "Algunas requisitos no fueron encontrados.";
+    return this.http.post<MessageDTO<ProductGetDTO>>(`${environment.api}api/moderator/create`, {
+      reason,
+      state,
+      productCode: productCode,
+      moderatorCode: this.auth.getLogged()?.id
+    }).toPromise().then(res => {
+      return res && res.answer ? res.answer : undefined;
+    });
   }
 
 }
