@@ -17,3 +17,7 @@
     color: white;
     background-color: #8a579e;
 }
+
+img {
+    max-width: 300px;
+}
